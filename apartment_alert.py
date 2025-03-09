@@ -15,6 +15,9 @@ TWILIO_AUTH_TOKEN = os.getenv("TWILIO_AUTH_TOKEN")
 TWILIO_PHONE_NUMBER = os.getenv("TWILIO_PHONE_NUMBER")
 RECIPIENT_PHONE_NUMBER = os.getenv("RECIPIENT_PHONE_NUMBER")
 GOOGLE_MAPS_API_KEY = os.getenv("GOOGLE_MAPS_API_KEYI")
+if not GOOGLE_MAPS_API_KEY:
+    raise ValueError("Google Maps API key not set.")
+gmaps = googlemaps.Client(key=GOOGLE_MAPS_API_KEY)
 
 # File for seen listings
 SEEN_LISTINGS_FILE = "seen_listings.json"
