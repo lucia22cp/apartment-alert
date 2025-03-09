@@ -1,5 +1,45 @@
-env:
-  TWILIO_SID: ${{ secrets.TWILIO_SID }}
-  TWILIO_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH_TOKEN }}
-  TWILIO_PHONE_NUMBER: ${{ secrets.TWILIO_PHONE_NUMBER }}
-  RECIPIENT_PHONE_NUMBER: ${{ secrets.RECIPIENT_PHONE_NUMBER }}
+name: Apartment Alert
+
+# Trigger the workflow on a schedule (every hour)
+on:
+  schedule:
+    - cron: '0 * * * *'  # This runs every hour on the hour
+  # You can also trigger it manually (optional)
+  workflow_dispatch:
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest  # You can use windows-latest if you prefer Windows environment
+    steps:
+      # Check out the code from GitHub
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'  # You can change the Python version if needed
+
+      # Install required dependencies
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt  # If you have a requirements.txt with dependencies
+
+      # Set up environment variables from GitHub secrets
+      - name: Set up environment variables
+        run: echo "GOOGLE_MAPS_API_KEY=${{ secrets.GOOGLE_MAPS_API_KEY }}" >> $GITHUB_ENV
+        env:
+          GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
+
+      - name: Set up Twilio credentials
+        run: |
+          echo "TWILIO_SID=${{ secrets.TWILIO_SID }}" >> $GITHUB_ENV
+          echo "TWILIO_AUTH_TOKEN=${{ secrets.TWILIO_AUTH_TOKEN }}" >> $GITHUB_ENV
+          echo "TWILIO_PHONE_NUMBER=${{ secrets.TWILIO_PHONE_NUMBER }}" >> $GITHUB_ENV
+          echo "RECIPIENT_PHONE_NUMBER=${{ secrets.RECIPIENT_PHONE_NUMBER }}" >> $GITHUB_ENV
+
+      # Run the apartment alert script
+      - name: Run apartment alert script
+        run: python apartment_alert.py
