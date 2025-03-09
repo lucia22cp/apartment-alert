@@ -14,7 +14,7 @@ TWILIO_SID = os.getenv("TWILIO_SID")
 TWILIO_AUTH_TOKEN = os.getenv("TWILIO_AUTH_TOKEN")
 TWILIO_PHONE_NUMBER = os.getenv("TWILIO_PHONE_NUMBER")
 RECIPIENT_PHONE_NUMBER = os.getenv("RECIPIENT_PHONE_NUMBER")
-GOOGLE_MAPS_API_KEY = os.getenv("GOOGLE_MAPS_API_KEY")
+GOOGLE_MAPS_API_KEY = os.getenv("AIzaSyDOV8jNdjgDEHNlUjK1AI_72OTlZ_QcI5I")
 
 # File for seen listings
 SEEN_LISTINGS_FILE = "seen_listings.json"
@@ -29,7 +29,7 @@ URLS = [
 SLUSSEN_COORDINATES = (59.3180483, 18.0715148)
 
 # Google Maps Client
-gmaps = googlemaps.Client(key=GOOGLE_MAPS_API_KEY)
+gmaps = googlemaps.Client(key=AIzaSyDOV8jNdjgDEHNlUjK1AI_72OTlZ_QcI5I)
 
 # Function to load seen listings
 def load_seen_listings():
