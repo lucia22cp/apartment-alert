@@ -27,14 +27,16 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt  # If you have a requirements.txt with dependencies
 
-     - name: Set up environment variables from GitHub secrets
-  run: |
-    echo "GOOGLE_MAPS_API_KEY=${{ secrets.GOOGLE_MAPS_API_KEY }}" >> $GITHUB_ENV
-    echo "TWILIO_SID=${{ secrets.TWILIO_SID }}" >> $GITHUB_ENV
-    echo "TWILIO_AUTH_TOKEN=${{ secrets.TWILIO_AUTH_TOKEN }}" >> $GITHUB_ENV
-    echo "TWILIO_PHONE_NUMBER=${{ secrets.TWILIO_PHONE_NUMBER }}" >> $GITHUB_ENV
-    echo "RECIPIENT_PHONE_NUMBER=${{ secrets.RECIPIENT_PHONE_NUMBER }}" >> $GITHUB_ENV
+      # Set up environment variables from GitHub secrets
+      - name: Set up environment variables from GitHub secrets
+        run: |
+          echo "GOOGLE_MAPS_API_KEY=${{ secrets.GOOGLE_MAPS_API_KEY }}" >> $GITHUB_ENV
+          echo "TWILIO_SID=${{ secrets.TWILIO_SID }}" >> $GITHUB_ENV
+          echo "TWILIO_AUTH_TOKEN=${{ secrets.TWILIO_AUTH_TOKEN }}" >> $GITHUB_ENV
+          echo "TWILIO_PHONE_NUMBER=${{ secrets.TWILIO_PHONE_NUMBER }}" >> $GITHUB_ENV
+          echo "RECIPIENT_PHONE_NUMBER=${{ secrets.RECIPIENT_PHONE_NUMBER }}" >> $GITHUB_ENV
 
       # Run the apartment alert script
       - name: Run apartment alert script
         run: python apartment_alert.py
+
