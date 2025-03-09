@@ -29,7 +29,7 @@ URLS = [
 SLUSSEN_COORDINATES = (59.3180483, 18.0715148)
 
 # Google Maps Client
-gmaps = googlemaps.Client(key=AIzaSyDOV8jNdjgDEHNlUjK1AI_72OTlZ_QcI5I)
+gmaps = googlemaps.Client(key=os.getenv("GOOGLE_MAPS_API_KEY"))
 
 # Function to load seen listings
 def load_seen_listings():
