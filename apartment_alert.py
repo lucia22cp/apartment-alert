@@ -94,7 +94,7 @@ def main():
     seen_listings = load_seen_listings()
     new_listings = scrape_listings()
     test_listing = ("Test Apartment", "https://example.com/test", 7500)
-new_listings.append(test_listing)
+    new_listings.append(test_listing)
 
     unseen_listings = [listing for listing in new_listings if listing[1] not in seen_listings]
 
