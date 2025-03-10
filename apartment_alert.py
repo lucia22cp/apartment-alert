@@ -17,7 +17,7 @@ RECIPIENT_PHONE_NUMBER = os.getenv("RECIPIENT_PHONE_NUMBER")
 GOOGLE_MAPS_API_KEY = os.getenv("GOOGLE_MAPS_API_KEYI")
 if not GOOGLE_MAPS_API_KEY:
     raise ValueError("Google Maps API key not set.")
-gmaps = googlemaps.Client(key=GOOGLE_MAPS_API_KEY)
+print(f"Google Maps API Key: {GOOGLE_MAPS_API_KEY}")  # Debugging
 
 # File for seen listings
 SEEN_LISTINGS_FILE = "seen_listings.json"
