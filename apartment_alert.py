@@ -14,7 +14,7 @@ TWILIO_SID = os.getenv("TWILIO_SID")
 TWILIO_AUTH_TOKEN = os.getenv("TWILIO_AUTH_TOKEN")
 TWILIO_PHONE_NUMBER = os.getenv("TWILIO_PHONE_NUMBER")
 RECIPIENT_PHONE_NUMBER = os.getenv("RECIPIENT_PHONE_NUMBER")
-GOOGLE_MAPS_API_KEY = os.getenv("GOOGLE_MAPS_API_KEYI")
+GOOGLE_MAPS_API_KEY = os.getenv("GOOGLE_MAPS_API_KEY")
 if not GOOGLE_MAPS_API_KEY:
     raise ValueError("Google Maps API key not set.")
 print(f"Google Maps API Key: {GOOGLE_MAPS_API_KEY}")  # Debugging
